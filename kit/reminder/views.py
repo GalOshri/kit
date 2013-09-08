@@ -1,10 +1,13 @@
 from django.shortcuts import render
 
-
-
 def index(request):
-	template = loader.get_template('reminder/index.html')
 	context = { }
-	return render(request, 'polls/index.html', context)
+	return render(request, 'reminder/index.html', context)
 	
+def add_friend(request):
+	context = { }
+	return render(request, 'reminder/add_friend.html', context)
 	
+def add_event(request):
+	context = { }
+	return render(request, 'reminder/add_event.html', context)
