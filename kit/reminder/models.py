@@ -27,7 +27,7 @@ class Event(models.Model):
 
 	owner = models.ForeignKey(User, related_name='asked')
 	participants = models.ManyToManyField('FriendProfile')
-	eventName = models.CharField(max_length=40)
+	name = models.CharField(max_length=40)
 	
 	#Frequency Categories
 	WEEKLY = 'WE'
@@ -48,4 +48,4 @@ class Event(models.Model):
 	text = models.TextField(blank=True)
 	
 	def __unicode__(self):
-		return self.eventName
+		return self.name

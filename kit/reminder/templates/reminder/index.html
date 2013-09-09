@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>KIT</title>
+		<title>Keep In Touch</title>
 		
 	</head>
 
 	<body>
-		<h1>This is a page!</h1>
-		
+		<h1>Welcome!</h1>
+		<h2>These are your friends</h2>
+		{% if friend_list %}
+			<ul>
+			{% for friend in friend_list %}
+				<li>{{ friend.firstName }}</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>No friends available.</p>
+		{% endif %}
 	</body>
 </html>

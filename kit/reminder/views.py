@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
+from reminder.models import FriendProfile
+
 def index(request):
-	context = { }
+	friend_list = FriendProfile.objects.all
+	context = { 'friend_list' : friend_list }
 	return render(request, 'reminder/index.html', context)
 	
 def add_friend(request):
