@@ -5,9 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^$', 'reminder.views.index'),
-	url(r'^reminder/add_friend$', 'reminder.views.add_friend'),
-	url(r'^reminder/add_event$', 'reminder.views.add_event'),
+	url(r'', include('reminder.urls', namespace='reminder')),
     # Examples:
     # url(r'^$', 'kit.views.home', name='home'),
     # url(r'^kit/', include('kit.foo.urls')),
