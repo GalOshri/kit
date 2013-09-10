@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Add a Friend!</title>
+		<title>Add an Event!</title>
 		
 	</head>
 
 	<body>
-		<h1>Add a Friend!</h1>
-		<form>
-			First Name:
-			<input id="first_name" type="text"/>
+		<h1>Add an Event!</h1>
+		<form action="{% url 'reminder:add_event_add' %}" method="post">
+		{% csrf_token %}
+			Event name:
+			<input id="name" name="name" type="text"/>
 			<br>
-			Last name:
-			<input id="last_name" type="text"/>
+			<select name="frequency">
+			{% for freq in possible_freq %}
+			<option value="{{ freq }}">{{ freq }}</option>
+			{% endfor %}
+			</select>
 			<br>
-			Relationship:
-			<input id="relationship" type="text"/>
+			Time:
+			<input type="date" name="time">
+			<br>
+			Email Reminder:
+			<input type="checkbox" name="reminder" value="reminder"/>
+			<br>
+			Text:
+			<input type="text" name="text" />
 			<br>
 			<input type="submit" name="submit_friend_form" value="Submit"/>
 		</form>

@@ -41,7 +41,7 @@ class Event(models.Model):
 		(YEARLY, 'Yearly'),
 	)
 	frequency = models.CharField(max_length=2, choices=FREQUENCY_CHOICES, default=MONTHLY)
-	time = models.TimeField()
+	time = models.DateField()
 	
 	emailReminder = models.BooleanField()
 	
