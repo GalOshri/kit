@@ -3,6 +3,8 @@ import os, sys
 
 APP_DIR = os.path.dirname( globals()['__file__'])
 
+LOGIN_REDIRECT_URL = '/'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
