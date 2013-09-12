@@ -2,11 +2,20 @@
 <html>
 	<head>
 		<title>Keep In Touch</title>
+
+		<!--jquery-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		
+		<!--bootstrap-->
+		{% load staticfiles %}
+		<link type="text/css" href="{{STATIC_URL}}bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet"/>
+		<link href="{{STATIC_URL}}bootstrap-3.0.0/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+		<script src="{{STATIC_URL}}bootstrap-3.0.0/dist/js/bootstrap.js"> </script>
 		
 	</head>
 
 	<body>
-		<h1>Welcome!</h1>
+		<h1 align="center" class="text-primary">Welcome!</h1>
 		<h2>These are your friends:</h2>
 		{% if friend_list %}
 			<ul>
