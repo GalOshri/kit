@@ -1,24 +1,21 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Add a Friend!</title>
-		
-	</head>
+{% extends "base.html" %}
 
-	<body>
-		<h1>Add a Friend!</h1>
-		<form action="{% url 'reminder:add_friend_add' %}" method="post">
-		{% csrf_token %}
-			First Name:
-			<input id="first_name" name="first_name" type="text"/>
-			<br>
-			Last name:
-			<input id="last_name" name="last_name" type="text"/>
-			<br>
-			Relationship:
-			<input id="relationship" name="relationship" type="text"/>
-			<br>
-			<input type="submit" name="submit_friend_form" value="Submit"/>
-		</form>
-	</body>
-</html>
+{% block title %}Add a Friend!{% endblock %}
+
+{% block content %}
+<h1>Add a Friend!</h1>
+<form action="{% url 'reminder:add_friend_add' %}" method="post">
+{% csrf_token %}
+	First Name:
+	<input id="first_name" name="first_name" type="text"/>
+	<br>
+	Last name:
+	<input id="last_name" name="last_name" type="text"/>
+	<br>
+	Relationship:
+	<input id="relationship" name="relationship" type="text"/>
+	<br>
+	<input type="submit" name="submit_friend_form" value="Submit"/>
+</form>
+
+{% endblock %}
