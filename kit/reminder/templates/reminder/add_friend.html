@@ -3,7 +3,9 @@
 {% block title %}Add a Friend!{% endblock %}
 
 {% block content %}
+
 <h1>Add a Friend!</h1>
+
 <form action="{% url 'reminder:add_friend_add' %}" method="post">
 {% csrf_token %}
 	First Name:

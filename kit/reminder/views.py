@@ -5,8 +5,15 @@ from django.contrib.auth.models import User
 from reminder.models import FriendProfile, Event
 
 def index(request):
-	friend_list = FriendProfile.objects.all
-	event_list = Event.objects.all
+	user = request.user
+	# get only the friends and events of the user
+	if user.is_authenticated():
+		friend_list = user.owns.all
+		event_list = user.asked.all
+	else:
+		friend_list = []
+		event_list = []
+
 	context = { 'friend_list' : friend_list, 'event_list' : event_list }
 	return render(request, 'reminder/index.html', context)
 	
@@ -22,12 +29,12 @@ def add_event(request):
 	return render(request, 'reminder/add_event.html', context)
 	
 def add_friend_add(request):
-	friend = FriendProfile(friend=User.objects.all()[0], firstName=request.POST['first_name'], lastName=request.POST['last_name'])
+	friend = FriendProfile(friend=request.user, firstName=request.POST['first_name'], lastName=request.POST['last_name'])
 	friend.save()
 	return HttpResponseRedirect('/')
 	
 def add_event_add(request):
-	event = Event(owner=User.objects.all()[0],  
+	event = Event(owner=request.user,  
 	name=request.POST['name'], 
 	frequency=request.POST['frequency'], 
 	time=request.POST['time'], 
@@ -37,3 +44,7 @@ def add_event_add(request):
 	event.participants.add(FriendProfile.objects.all()[0])
 	event.save()
 	return HttpResponseRedirect('/')
+	
+def friend_profile(request):
+	context = {}
+	return render(request, 'reminder/friend_profile.html', context)

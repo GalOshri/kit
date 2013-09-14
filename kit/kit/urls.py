@@ -9,6 +9,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	url(r'', include('reminder.urls', namespace='reminder')),
 	url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'redirect_field_name': 'reminder/index.html'}),
+	url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page' : '/'}),
     # Examples:
     # url(r'^$', 'kit.views.home', name='home'),
     # url(r'^kit/', include('kit.foo.urls')),

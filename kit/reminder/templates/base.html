@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!--jquery-->
+	<!-- jquery -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	
-	<!--bootstrap-->
+	<!-- bootstrap -->
 	{% load staticfiles %}
 	<link type="text/css" href="{{STATIC_URL}}bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet"/>
 	<link href="{{STATIC_URL}}bootstrap-3.0.0/dist/css/bootstrap-theme.css" rel="stylesheet"/>
 	<script src="{{STATIC_URL}}bootstrap-3.0.0/dist/js/bootstrap.js"> </script>
 	
+	<!-- css -->
+	<link type="text/css" href="{{STATIC_URL}}css/base.css" rel="stylesheet"/>
+	
     <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
-
+	<div id="headbar">
+	<a href="{% url 'reminder:index' %}">Home</a>
+	</div>
 
     <div id="content">
         {% block content %}{% endblock %}
