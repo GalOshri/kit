@@ -8,6 +8,9 @@ urlpatterns = patterns('reminder.views',
 	url(r'^add_friend/add$', 'add_friend_add', name='add_friend_add'),
 	url(r'^add_event$', 'add_event', name='add_event'),
 	url(r'^add_event/add$', 'add_event_add', name='add_event_add'),
+	url(r'^accounts/add$', 'add_user', name='add_user'),
+	url(r'^accounts/add/add$', 'add_user_add', name='add_user_add'),
+	
     # Examples:
     # url(r'^$', 'kit.views.home', name='home'),
     # url(r'^kit/', include('kit.foo.urls')),

@@ -48,3 +48,20 @@ def add_event_add(request):
 def friend_profile(request):
 	context = {}
 	return render(request, 'reminder/friend_profile.html', context)
+	
+def add_user(request):
+	context = { }
+	return render(request, 'registration/add_user.html', context)
+	
+def add_user_add(request):
+	newUser = User.objects.create_user(request.POST['uname'],request.POST['email'], request.POST['pwd'])
+	newUser.last_name = request.POST['last_name']
+	newUser.first_name = request.POST['first_name']
+	
+	newUser.save()
+	
+	#add to UserProfiles
+	addUserProf = newUser
+	addUserProf.save()
+	
+	return HttpResponseRedirect('/')

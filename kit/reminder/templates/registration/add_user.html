@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Add an Event!{% endblock %}
+
+{% block content %}
+<h1>New Users</h1>
+<h3>Create a Profile</h3>
+<form action="{% url 'reminder:add_user_add' %}" method="post">
+{% csrf_token %}
+	First Name:
+	<input id="first_name" name="first_name" type="text"/>
+	<br>
+	Last Name:
+	<input id="last_name" name="last_name" type="text"/>
+	<br>
+	username:
+	<input id="uname" name="uname" type="text"/>
+	<br>
+	Password:
+	<input id="pwd" name="pwd" type="password"/>
+	<br>
+	Email:
+	<input id="email" name="email" type="text"/>
+	<br>
+	
+	<input type="submit" name="submit_user_form" value="Join!"/>
+</form>
+{% endblock %}
