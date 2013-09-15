@@ -4,6 +4,11 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from reminder.models import FriendProfile, Event
 
+def base(request):
+	user = request.user
+	context = { }
+	return render(request, 'base.html', context)
+
 def index(request):
 	user = request.user
 	# get only the friends and events of the user

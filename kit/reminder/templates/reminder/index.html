@@ -4,25 +4,6 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-
-<p> welcome, {{ user.username }}. </p>
-<a href="/accounts/logout">logout</a>
-
-</br></br></br>
-<a href="{% url 'reminder:add_friend' %}">Add Friend</a>
-</br></br></br>
-<a href="{% url 'reminder:add_event' %}">Add Event</a>
-
-
-{% else %}
-
-<a href="/accounts/login">login</a>
-<a href="/accounts/add">Create an account</a>
-{% endif %}
-
-
-
 
 
 <h1 align="center" class="text-primary">Welcome!</h1>

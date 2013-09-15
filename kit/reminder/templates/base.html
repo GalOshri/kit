@@ -17,9 +17,36 @@
 </head>
 
 <body>
-	<div id="headbar">
-	<a href="{% url 'reminder:index' %}">Home</a>
-	</div>
+	<nav id="headbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			  <span class="sr-only">Toggle navigation</span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="{% url 'reminder:index' %}">babble</a>
+		</div>
+		
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="{% url 'reminder:index' %}">home</a></li>
+				<li><a href="#">about</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				{% if user.is_authenticated %}
+					<li><a href="#">{{ user.first_name}}'s Profile</a></li>
+					<li><a href="/accounts/logout">logout</a></li>
+					
+				{% else %}
+					<li><a href="/accounts/login">Log in</a></li>
+					<li><a href="/accounts/add">Create Account</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
+
 
     <div id="content">
         {% block content %}{% endblock %}
