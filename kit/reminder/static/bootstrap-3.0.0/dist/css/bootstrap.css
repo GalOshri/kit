@@ -548,7 +548,9 @@ h4 small,
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #563d7c;
+  color: #563d7c;
+  
 }
 
 ul,
@@ -746,6 +748,7 @@ pre code {
 }
 
 .container {
+  padding-top: 50px; /* offset fixed top */
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -4923,7 +4926,8 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #563d7c;
+  color: #ffffff;
 }
 
 .jumbotron h1 {
