@@ -3,34 +3,87 @@
 {% block title %}babble{% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+	<div class='page-header'><h1><strong>hi.</strong><br> <small></small></h1></div>
 
-{%  if user.is_authenticated %}
-	<div class="container">
-		<h1 align="center" class="text-primary">Welcome!</h1>
-		<h2>These are your friends:</h2>
+	
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#friendCollapse">
+					friends:</a>
+				</h2>
+			</div>
+			<div id="friendCollapse" class="panel-collapse collapse in">
+				<div class="panel-body">
+					{% if friend_list %}
+					<table class="table table-hover">
+						{% for friend in friend_list %}
+						<td><tr>{{ friend.firstName }}</tr></td>
+						{% endfor %}
+					
+					{% else %}
+						<p>No friends available.</p>
+					{% endif %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+		<!--<h2>These are your friends:</h2>
 		{% if friend_list %}
 			<ul>
 			{% for friend in friend_list %}
 				<li>{{ friend.firstName }}</li>
 			{% endfor %}
-			</ul>
-		{% else %}
-			<p>No friends available.</p>
-		{% endif %}
+			</ul>-->
+	
 
 		</br>
-
-		<h2>These are your reminders:</h2>
-				{% if event_list %}
-			<ul>
+	
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#eventCollapse">
+					events:</a>
+				</h2>
+			</div>
+			<div id="eventCollapse" class="panel-collapse collapse in">
+				<div class="panel-body">
+					{% if event_list %}
+					<table class="table table-hover">
+						{% for event in event_list %}
+						<td><tr>{{ event.name }}</tr></td>
+						{% endfor %}
+					
+					{% else %}
+						<p>No events available.</p>
+					{% endif %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+		<!--<h2>These are your reminders:</h2>
+		{% if event_list %}
+		<ul>
 			{% for event in event_list %}
-				<li>{{ event.name }}</li>
+			<li>{{ event.name }}</li>
 			{% endfor %}
-			</ul>
+		</ul>
 		{% else %}
 			<p>No events available.</p>
 		{% endif %}
-	</div>
+	</div>-->
+
 {% else %}
 	<br>
 	<div class="container">
@@ -46,4 +99,6 @@
 	
 	</div>
 {% endif %}
+{% endif %}
+
 {% endblock %}
