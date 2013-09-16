@@ -3,21 +3,27 @@
 {% block title %}Add a Friend!{% endblock %}
 
 {% block content %}
+<div class="container">
+	<div class='page-header'><h1><strong>add a friend</strong><br> <small>keep in touch with your friends</small></h1></div>
 
-<h1>Add a Friend!</h1>
-
-<form action="{% url 'reminder:add_friend_add' %}" method="post">
-{% csrf_token %}
-	First Name:
-	<input id="first_name" name="first_name" type="text"/>
-	<br>
-	Last name:
-	<input id="last_name" name="last_name" type="text"/>
-	<br>
-	Relationship:
-	<input id="relationship" name="relationship" type="text"/>
-	<br>
-	<input type="submit" name="submit_friend_form" value="Submit"/>
+<form class="form-horizontal" role="form" action="{% url 'reminder:add_friend_add' %}" method="post">
+	{% csrf_token %}
+	<div class="form-group">
+			<label for="first_name" class="col-lg-2 control-label">first name:</label>
+			<div class="col-lg-6"><input class="form-control" id="first_name" name="first_name" type="text"/></div>
+		</div>
+	<br/>	  	
+	<div class="form-group">
+		<label for="last_name" class="col-lg-2 control-label">last name:</label>
+		<div class="col-lg-6"><input class="form-control" id="last_name" name="last_name" type="text"/></div>
+	</div>	
+	<br/>
+	<div class="form-group">
+		<label for="relationship" class="col-lg-2 control-label">relationship:</label>
+		<div class="col-lg-6"><input class="form-control" id="relationship" name="relationship" type="text"/></div>
+	</div>	
+	<br/>
+	<label class='control-label'><input type="submit" value="add friend reminder" class="btn btn-primary"/></label>
+	<input type="hidden" name="next" value="{{ next }}" />
 </form>
-
 {% endblock %}

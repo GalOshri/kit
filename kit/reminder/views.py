@@ -43,7 +43,7 @@ def add_event_add(request):
 	name=request.POST['name'], 
 	frequency=request.POST['frequency'], 
 	time=request.POST['time'], 
-	emailReminder=request.POST['reminder'], 
+	emailReminder=request.POST['emailReminder'], 
 	text=request.POST['text'])
 	event.save()
 	event.participants.add(FriendProfile.objects.all()[0])

@@ -1,31 +1,48 @@
 {% extends "base.html" %}
 
-{% block title %}Add an Event!{% endblock %}
+{% block title %}babble-add event{% endblock %}
 
 {% block content %}
+<div class="container">
+	<div class='page-header'><h1><strong>add a reminder</strong><br> <small>keep in touch with your friends</small></h1></div>
 
-<h1>Add an Event!</h1>
-
-<form action="{% url 'reminder:add_event_add' %}" method="post">
-{% csrf_token %}
-	Event name:
-	<input id="name" name="name" type="text"/>
+<form class="form-horizontal" role="form" action="{% url 'reminder:add_event_add' %}" method="post">
+	{% csrf_token %}
+	
+	<div class="form-group">
+		<label for="name" class="col-lg-2 control-label">reminder name:</label>
+		<div class="col-lg-6"><input class="form-control" id="name" name="name" type="text"/></div>
+	</div>
+		
 	<br>
-	<select name="frequency">
-	{% for freq in possible_freq %}
-	<option value="{{ freq }}">{{ freq }}</option>
-	{% endfor %}
-	</select>
-	<br>
-	Time:
-	<input type="date" name="time">
-	<br>
-	Email Reminder:
-	<input type="checkbox" name="reminder" value="reminder"/>
-	<br>
-	Text:
-	<input type="text" name="text" />
-	<br>
-	<input type="submit" name="submit_friend_form" value="Submit"/>
+	
+	<div class="form-group">
+		<label for="frequency" class="col-lg-2 control-label">remind me </label>
+		<div class="col-lg-6">
+			<select class="form-control" id="frequency" name="frequency">
+				{% for freq in possible_freq %}
+				<option value="{{ freq }}">{{ freq }}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	<br/>
+	<div class="form-group">
+		<label for="time" class="col-lg-2 control-label">first reminder on:</label>
+		<div class="col-lg-6"><input class="form-control" id="time" name="time" type="date"/></div>
+	</div>
+	<br/>
+	<div class="form-group">
+		<label for="emailReminder" class="col-lg-2 control-label">set an email reminder:</label>
+		<div class="col-lg-6"><input class="form-control" id="emailReminder" name="emailReminder" type="checkbox"/></div>
+	</div>
+	<br/>
+	<div class="form-group">
+		<label for="text" class="col-lg-2 control-label">description:</label>
+		<div class="col-lg-6"><input class="form-control" id="text" name="text" type="text"/></div>
+	</div>
+	<br/>
+	<label class='control-label'><input type="submit" value="create reminder" class="btn btn-primary"/></label>
+	<input type="hidden" name="next" value="{{ next }}" />
 </form>
 {% endblock %}
